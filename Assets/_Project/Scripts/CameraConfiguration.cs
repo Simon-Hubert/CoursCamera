@@ -62,6 +62,7 @@ public struct CameraConfiguration
     }
     
     public static CameraConfiguration operator /(CameraConfiguration left, float right) {
+        if (right == 0) throw new ArgumentException("Divided by zero");
         return new CameraConfiguration()
         {
             Yaw = left.Yaw * (1f/right),
