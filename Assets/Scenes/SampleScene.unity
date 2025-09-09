@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Camera>k__BackingField: {fileID: 330585545}
-  _smoother: {fileID: 11400000, guid: 583cb73deb10c15409a8c6935f89fc32, type: 2}
+  _smoother: {fileID: 11400000, guid: 3726d6bec234e2549bf745f32b4b56d4, type: 2}
 --- !u!4 &782982344
 Transform:
   m_ObjectHideFlags: 0
