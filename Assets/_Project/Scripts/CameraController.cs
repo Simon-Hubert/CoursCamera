@@ -55,7 +55,7 @@ public class CameraController : MonoBehaviour
             weightSum += view.Weight;
         }
         config /= weightSum;
-        config.Yaw = Mathf.Atan2(yawVector.y, yawVector.x); //Angle de la somme des vecteurs de yaw
+        config.Yaw = Mathf.Atan2(yawVector.y, yawVector.x) * Mathf.Rad2Deg; //Angle de la somme des vecteurs de yaw
         return config;
     }
 

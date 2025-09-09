@@ -18,4 +18,8 @@ public abstract class AView : MonoBehaviour
         if (isActive) CameraController.instance.AddView(this);
         else CameraController.instance.RemoveView(this);
     }
+
+    private void OnDrawGizmos() {
+        GetConfiguration().DrawGizmo(Color.green);
+    }
 }
