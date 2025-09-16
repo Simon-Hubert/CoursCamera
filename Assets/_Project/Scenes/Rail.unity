@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Weight>k__BackingField: 1
-  <IsActiveOnStart>k__BackingField: 1
+  <IsActiveOnStart>k__BackingField: 0
   _roll: 0
   _distance: 0
   _fov: 90
@@ -309,6 +309,7 @@ MonoBehaviour:
   _rail: {fileID: 600447432}
   _distanceOnRail: 27.2
   _speed: 0
+  _isAuto: 1
 --- !u!4 &389153649
 Transform:
   m_ObjectHideFlags: 0
@@ -473,7 +474,7 @@ Transform:
   m_GameObject: {fileID: 742893832}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.04, y: 6.680041, z: 19.1}
+  m_LocalPosition: {x: 3.29, y: 6.680041, z: 21.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

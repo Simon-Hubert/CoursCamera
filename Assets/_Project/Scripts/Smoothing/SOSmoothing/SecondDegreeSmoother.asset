@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690b3c62d47954f4abd97a8ae16af522, type: 3}
   m_Name: SecondDegreeSmoother
   m_EditorClassIdentifier: 
-  _f: 0.5
-  _z: 1
-  _r: -0.1
+  _f: 1.86
+  _z: 0.9
+  _r: 0

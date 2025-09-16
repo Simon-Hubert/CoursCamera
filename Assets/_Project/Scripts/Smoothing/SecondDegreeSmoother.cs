@@ -18,7 +18,6 @@ public class SecondDegreeSmoother : CameraSmoother
         _k2 = 1 / ((2 * PI * _f) * (2 * PI * _f));
         _k3 = _r * _z / (2 * PI * _f);
         
-        Debug.Log(target.Yaw);
         
         CameraConfiguration lastSpeed = (target - _lastPos) / Time.deltaTime;
         _lastPos = target;

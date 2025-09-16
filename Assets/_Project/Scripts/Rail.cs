@@ -55,6 +55,22 @@ public class Rail : MonoBehaviour
         return _nodes[^1].position;
     }
 
+    public Vector3 GetNearestPoint(Vector3 target) {
+        Vector3 nearest = new Vector3();
+        float minDist = float.MaxValue;
+        for (int i = 1; i < _nodes.Length; i++) {
+            Vector3 proj = MathUtils.GetNearestPointOnSegment(_nodes[i - 1].position, _nodes[i].position, target);
+            float dist = (target - proj).magnitude;
+            if ( dist < minDist) {
+                minDist = dist;
+                nearest = proj;
+            }
+        }
+
+        return nearest;
+    }
+    
+
     private void OnDrawGizmos() {
         UpdateNodes();
         if (_nodes != null) {
