@@ -52,7 +52,7 @@ public class FreeFollowView : AView
         
         return new CameraConfiguration
         {
-            Yaw = _yaw + 90f,
+            Yaw = _yaw,
             Pitch = pitch,
             Roll = roll,
             Fov = fov,
@@ -62,6 +62,6 @@ public class FreeFollowView : AView
     }
 
     private void OnDrawGizmos() {
-        _curve.DrawGizmo(Color.yellow, transform.localToWorldMatrix);
+        _curve.DrawGizmo(Color.yellow, _target.localToWorldMatrix);
     }
 }

@@ -11,6 +11,9 @@ public class FixedFollowView : AView
     [SerializeField] private Transform _central;
     [SerializeField] private float _yawOffsetMax;
     [SerializeField] private float _pitchOffsetMax;
+
+    private float _yaw;
+    private float _centralYaw;
     
     public override CameraConfiguration GetConfiguration() {
         Vector3 dir = _target.position - transform.position;
@@ -18,13 +21,13 @@ public class FixedFollowView : AView
         dir.Normalize();
         centralDir.Normalize();
 
-        float yaw = Atan2(dir.x, dir.z) * Rad2Deg;
-        float centralYaw = Atan2(centralDir.x, centralDir.z) * Rad2Deg;
+        _yaw += DeltaAngle(_yaw, Atan2(dir.x, dir.z) * Rad2Deg);
+        _centralYaw += DeltaAngle(_centralYaw, Atan2(centralDir.x, centralDir.z) * Rad2Deg);
 
         float pitch = -Asin(dir.y) * Rad2Deg;
         float centralPitch = -Asin(centralDir.y) * Rad2Deg;
         
-        float clampedYaw = centralYaw + Clamp(DeltaAngle(centralYaw, yaw ), -_yawOffsetMax, _yawOffsetMax);
+        float clampedYaw = _centralYaw + Clamp(DeltaAngle(_centralYaw, _yaw ), -_yawOffsetMax, _yawOffsetMax);
         float clampedPitch = centralPitch + Clamp(DeltaAngle(centralPitch, pitch ), -_pitchOffsetMax, _pitchOffsetMax);
         
         return new CameraConfiguration
