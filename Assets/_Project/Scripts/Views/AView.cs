@@ -6,13 +6,13 @@ using UnityEngine;
 public abstract class AView : MonoBehaviour
 {
     [field: SerializeField] public float Weight { get; set; }
-    [field: SerializeField] public bool IsActiveOnStart { get; set; }
+    //[field: SerializeField] public bool IsActiveOnStart { get; set; }
     
     public abstract CameraConfiguration GetConfiguration();
 
-    private void Start() {
+    /*private void Start() {
         if(IsActiveOnStart) SetActive(true);
-    }
+    }*/
 
     public void SetActive(bool isActive) {
         if (isActive) CameraController.instance.AddView(this);

@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
 
     private readonly List<AView> _activeViews = new List<AView>();
     private CameraConfiguration _target;
+    private bool _isCutRequested;
     
     private void Awake() {
         if (instance != null) {
@@ -26,7 +27,15 @@ public class CameraController : MonoBehaviour
     private void Update() {
         ApplyConfiguration();
         _target = ComputeAverage();
-        _configuration = _smoother.Smooth(_configuration, _target);
+        if (_isCutRequested)
+        {
+            _configuration = _target;
+            _isCutRequested = false;
+        }
+        else
+        {
+            _configuration = _smoother.Smooth(_configuration, _target);
+        }
     }
     
     private void ApplyConfiguration() {
@@ -40,6 +49,11 @@ public class CameraController : MonoBehaviour
     
     public void RemoveView(AView view) {
         if(_activeViews.Contains(view)) _activeViews.Remove(view);
+    }
+
+    public void Cut()
+    {
+        _isCutRequested = true;
     }
 
     private CameraConfiguration ComputeAverage() {
