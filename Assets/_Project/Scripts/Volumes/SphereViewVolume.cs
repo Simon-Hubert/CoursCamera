@@ -25,7 +25,7 @@ public class SphereViewVolume : AViewVolume
     }
 
     public override float ComputeSelfWeight() => Mathf.InverseLerp(OuterRadius, InnerRadius, _distance);
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(0.5f, 0, 1, 1f);
         Gizmos.DrawWireSphere(transform.position, InnerRadius);

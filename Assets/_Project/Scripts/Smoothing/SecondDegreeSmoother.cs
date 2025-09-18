@@ -10,6 +10,10 @@ public class SecondDegreeSmoother : CameraSmoother
 {
     private CameraConfiguration _lastPos;
     private CameraConfiguration _speed;
+
+    private Vector2 _lastYawVector;
+    private Vector2 _yawSpeed;
+    
     [SerializeField] private float _f, _z, _r; 
     private float _k1, _k2, _k3;
 
@@ -22,9 +26,26 @@ public class SecondDegreeSmoother : CameraSmoother
         CameraConfiguration lastSpeed = (target - _lastPos) / Time.deltaTime;
         _lastPos = target;
         
+        Vector2 yawVector =  new Vector2(
+            Mathf.Cos(target.Yaw * Deg2Rad),
+            Mathf.Sin(target.Yaw * Deg2Rad));
+        
+        Vector2 currentYawVector =  new Vector2(
+            Mathf.Cos(target.Yaw * Deg2Rad),
+            Mathf.Sin(target.Yaw * Deg2Rad));
+
+
+        Vector2 lastYawSpeed = (yawVector - _lastYawVector) / Time.deltaTime;
+        _lastYawVector = yawVector;
+        
+        _yawSpeed += Time.deltaTime * (yawVector + _k3 * lastYawSpeed - currentYawVector - _k1 * _yawSpeed) / _k2;
+        
         current += Time.deltaTime * _speed;
         _speed += Time.deltaTime * (target + _k3 * lastSpeed - current - _k1 * _speed) / _k2;
-        
+
+        currentYawVector += _yawSpeed * Time.deltaTime;
+        current.Yaw = Atan2(currentYawVector.y, currentYawVector.x) * Rad2Deg;
+         
         return current;
     }
 }
