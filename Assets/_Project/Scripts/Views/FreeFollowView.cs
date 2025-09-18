@@ -36,7 +36,6 @@ public class FreeFollowView : AView
 
     private void HandleAxis(InputAction.CallbackContext context) {
         _axisInput = context.ReadValue<Vector2>();
-        Debug.Log(_axisInput);
     }
 
     private void Update() {
