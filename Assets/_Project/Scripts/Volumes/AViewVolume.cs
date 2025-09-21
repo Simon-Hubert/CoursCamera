@@ -31,7 +31,6 @@ public abstract class AViewVolume : MonoBehaviour
 
     public virtual float ComputeSelfWeight()
     {
-        
         return 1;
     }
 
